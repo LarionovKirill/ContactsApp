@@ -1,3 +1,5 @@
+using ContactApp;
+
 namespace ContactAppUI
 {
     internal static class Program
