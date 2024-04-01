@@ -6,7 +6,7 @@ namespace ContactApp.Service
     /// <summary>
     /// Класс сериализатор контактов.
     /// </summary>
-    public class Serializer
+    public static class Serializer
     {
         /// <summary>
         /// Путь к JSON - файлу контактов.
