@@ -1,4 +1,5 @@
 using ContactApp.Model;
+using ContactApp.Service;
 
 namespace ContactAppUI
 {
@@ -51,6 +52,32 @@ namespace ContactAppUI
             {
                 Console.WriteLine("Has Error");
             }
+        }
+
+        /// <summary>
+        /// Проверка сериализации данных.
+        /// </summary>
+        private void SerializeButton_Click(object sender, EventArgs e)
+        {
+            var contacts = new List<Contact>();
+            var contact = new Contact(
+                "Иванов",
+                "Иван",
+                "google@gamil.com",
+                DateTime.Today,
+                "Id2323232",
+                "79336547800");
+            contacts.Add(contact);
+            Serializer.SaveToFile(contacts);
+        }
+
+        /// <summary>
+        /// Проверка десериализации данных.
+        /// </summary>
+        private void DeserializeButton_Click(object sender, EventArgs e)
+        {
+            var contacts = Serializer.LoadFromFile();
+            Console.WriteLine(contacts[0].Name);
         }
     }
 }
