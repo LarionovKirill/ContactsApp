@@ -28,12 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            CreateContactButton = new Button();
+            CreateContactErrorButton = new Button();
+            SuspendLayout();
+            // 
+            // CreateContactButton
+            // 
+            CreateContactButton.Location = new Point(36, 32);
+            CreateContactButton.Name = "CreateContactButton";
+            CreateContactButton.Size = new Size(139, 24);
+            CreateContactButton.TabIndex = 0;
+            CreateContactButton.Text = "Создать класс";
+            CreateContactButton.UseVisualStyleBackColor = true;
+            CreateContactButton.Click += CreateContactButton_Click;
+            // 
+            // CreateContactErrorButton
+            // 
+            CreateContactErrorButton.Location = new Point(36, 74);
+            CreateContactErrorButton.Name = "CreateContactErrorButton";
+            CreateContactErrorButton.Size = new Size(139, 24);
+            CreateContactErrorButton.TabIndex = 1;
+            CreateContactErrorButton.Text = "Проверка валидации";
+            CreateContactErrorButton.UseVisualStyleBackColor = true;
+            CreateContactErrorButton.Click += CreateContactErrorButton_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(CreateContactErrorButton);
+            Controls.Add(CreateContactButton);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button CreateContactButton;
+        private Button CreateContactErrorButton;
     }
 }
