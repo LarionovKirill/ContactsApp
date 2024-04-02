@@ -108,7 +108,9 @@ namespace ContactAppUI
         /// </summary>
         private void AddContact_Click(object sender, EventArgs e)
         {
-
+            TransferContact.Data = new Contact();
+            var addForm = new AddEditContactForm();
+            addForm.ShowDialog();
         }
 
         /// <summary>

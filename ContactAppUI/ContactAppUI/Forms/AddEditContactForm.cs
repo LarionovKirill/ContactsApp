@@ -1,4 +1,5 @@
 ﻿using ContactApp.Model;
+using ContactApp.Service;
 
 namespace ContactAppUI.Forms
 {
@@ -10,7 +11,7 @@ namespace ContactAppUI.Forms
         /// <summary>
         /// Текущий контакт для редактирования/создания.
         /// </summary>
-        public Contact CurrentContact { get; set; } = new Contact();
+        public Contact CurrentContact { get; set; }
 
         /// <summary>
         /// Инициализация формы.
@@ -18,6 +19,15 @@ namespace ContactAppUI.Forms
         public AddEditContactForm()
         {
             InitializeComponent();
+            CurrentContact = TransferContact.Data;
+            if (CurrentContact.Surname == null)
+            {
+                BlockCreateButton();
+            }
+            else
+            {
+                UpdateContactInformation(CurrentContact);
+            }
         }
 
         /// <summary>
@@ -44,6 +54,7 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.Surname = SurnameTextBox.Text;
+                SurnameTextBox.BackColor = Color.White;
             }
             catch
             {
@@ -60,6 +71,7 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.Name = NameTextBox.Text;
+                NameTextBox.BackColor = Color.White;
             }
             catch
             {
@@ -76,6 +88,7 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.Birthday = BirthdayDateTime.Value;
+                BirthdayDateTime.BackColor = Color.White;
             }
             catch
             {
@@ -92,6 +105,7 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.PhoneNumber.Phone = PhoneTextBox.Text;
+                PhoneTextBox.BackColor = Color.White;
             }
             catch
             {
@@ -108,6 +122,7 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.Email = EmailTextBox.Text;
+                EmailTextBox.BackColor = Color.White;
             }
             catch
             {
@@ -124,12 +139,27 @@ namespace ContactAppUI.Forms
             try
             {
                 CurrentContact.VkID = VkTextBox.Text;
+                VkTextBox.BackColor = Color.White;
             }
             catch
             {
                 VkTextBox.BackColor = Color.LightCoral;
                 BlockCreateButton();
             }
+        }
+
+        /// <summary>
+        /// Обновление полей с информацией об контакте.
+        /// </summary>
+        /// <param name="contact">Контакт.</param>
+        private void UpdateContactInformation(Contact contact)
+        {
+            SurnameTextBox.Text = contact.Surname;
+            NameTextBox.Text = contact.Name;
+            BirthdayDateTime.Value = contact.Birthday;
+            PhoneTextBox.Text = contact.PhoneNumber.Phone;
+            EmailTextBox.Text = contact.Email;
+            VkTextBox.Text = contact.VkID;
         }
     }
 }

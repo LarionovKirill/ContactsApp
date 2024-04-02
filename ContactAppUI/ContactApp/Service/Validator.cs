@@ -15,7 +15,7 @@ namespace ContactApp.Service
         /// <exception cref="ArgumentException">Если длина строки больше переданной.</exception>
         public static void СheckMaxStringLength(string word, int maxLength)
         {
-            if (word.Length > maxLength)
+            if (word.Length > maxLength || word.Length == 0)
             {
                 throw new ArgumentException();
             }
@@ -42,7 +42,10 @@ namespace ContactApp.Service
         /// <exception cref="ArgumentException"></exception>
         public static void CheckPhoneNumber(string number)
         {
-            if (number.Length != 11 || number[0] != '7' || HasOtherSymbols(number))
+            if (number.Length > 11 || 
+                number[0] != '7' || 
+                HasOtherSymbols(number) || 
+                number.Length == 0)
             {
                 throw new ArgumentException();
             }
