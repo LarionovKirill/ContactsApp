@@ -89,9 +89,9 @@
             LowerInfo.AutoSize = true;
             LowerInfo.Location = new Point(23, 317);
             LowerInfo.Name = "LowerInfo";
-            LowerInfo.Size = new Size(106, 15);
+            LowerInfo.Size = new Size(117, 15);
             LowerInfo.TabIndex = 5;
-            LowerInfo.Text = "2024 Larionov Kirill";
+            LowerInfo.Text = "2024 Larionov Kirill©";
             // 
             // EmailLink
             // 
@@ -102,6 +102,7 @@
             EmailLink.TabIndex = 6;
             EmailLink.TabStop = true;
             EmailLink.Text = "lari-kir2013@mail.ru";
+            EmailLink.LinkClicked += EmailLink_LinkClicked;
             // 
             // GitLink
             // 
@@ -118,7 +119,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(447, 341);
+            ClientSize = new Size(434, 341);
             Controls.Add(GitLink);
             Controls.Add(EmailLink);
             Controls.Add(LowerInfo);
@@ -127,6 +128,7 @@
             Controls.Add(AuthorLabel);
             Controls.Add(VersionLabel);
             Controls.Add(NameApplication);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "AboutForm";
             Text = "About";
             ResumeLayout(false);

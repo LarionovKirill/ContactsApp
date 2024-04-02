@@ -35,5 +35,17 @@ namespace ContactAppUI.Forms
                 UseShellExecute = true
             });
         }
+
+        /// <summary>
+        /// Сохранение электронной почты автора.
+        /// </summary>
+        private void EmailLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Clipboard.SetText(EmailLink.Text);
+            MessageBox.Show(
+                "Email был скопирован в буфер обмена",
+                "Информация",
+                MessageBoxButtons.OK);
+        }
     }
 }
