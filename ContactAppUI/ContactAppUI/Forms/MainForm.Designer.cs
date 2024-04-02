@@ -60,7 +60,7 @@
             // 
             ExitMenuItem.Name = "ExitMenuItem";
             ExitMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            ExitMenuItem.Size = new Size(180, 22);
+            ExitMenuItem.Size = new Size(135, 22);
             ExitMenuItem.Text = "Exit";
             ExitMenuItem.Click += ExitMenuItem_Click;
             // 
@@ -74,19 +74,19 @@
             // addContactToolStripMenuItem
             // 
             addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            addContactToolStripMenuItem.Size = new Size(180, 22);
+            addContactToolStripMenuItem.Size = new Size(162, 22);
             addContactToolStripMenuItem.Text = "Add Contact";
             // 
             // editContactToolStripMenuItem
             // 
             editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
-            editContactToolStripMenuItem.Size = new Size(180, 22);
+            editContactToolStripMenuItem.Size = new Size(162, 22);
             editContactToolStripMenuItem.Text = "Edit Contact";
             // 
             // removeContactToolStripMenuItem
             // 
             removeContactToolStripMenuItem.Name = "removeContactToolStripMenuItem";
-            removeContactToolStripMenuItem.Size = new Size(180, 22);
+            removeContactToolStripMenuItem.Size = new Size(162, 22);
             removeContactToolStripMenuItem.Text = "Remove Contact";
             // 
             // helpToolStripMenuItem
@@ -100,9 +100,9 @@
             // 
             AboutMenuItem.Name = "AboutMenuItem";
             AboutMenuItem.ShortcutKeys = Keys.F1;
-            AboutMenuItem.Size = new Size(180, 22);
+            AboutMenuItem.Size = new Size(126, 22);
             AboutMenuItem.Text = "About";
-            AboutMenuItem.Click += this.AboutMenuItem_Click;
+            AboutMenuItem.Click += AboutMenuItem_Click;
             // 
             // MainForm
             // 
