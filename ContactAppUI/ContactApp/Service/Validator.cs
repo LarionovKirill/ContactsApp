@@ -42,7 +42,7 @@ namespace ContactApp.Service
         /// <exception cref="ArgumentException"></exception>
         public static void CheckPhoneNumber(string number)
         {
-            if (number.Length > 11 || 
+            if (number.Length != 11 || 
                 number[0] != '7' || 
                 HasOtherSymbols(number) || 
                 number.Length == 0)

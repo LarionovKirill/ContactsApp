@@ -23,6 +23,7 @@ namespace ContactAppUI.Forms
             if (CurrentContact.Surname == null)
             {
                 BlockCreateButton();
+                СolorizeTextBoxes();
             }
             else
             {
@@ -46,6 +47,14 @@ namespace ContactAppUI.Forms
             OkButton.Enabled = false;
         }
 
+        private void TryUnlockCreateButton()
+        {
+            if (CheckCorrectnessFields())
+            {
+                OkButton.Enabled = true;
+            }
+        }
+
         /// <summary>
         /// Событие изменении фамилии контакта.
         /// </summary>
@@ -55,6 +64,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.Surname = SurnameTextBox.Text;
                 SurnameTextBox.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -72,6 +82,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.Name = NameTextBox.Text;
                 NameTextBox.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -89,6 +100,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.Birthday = BirthdayDateTime.Value;
                 BirthdayDateTime.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -106,6 +118,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.PhoneNumber.Phone = PhoneTextBox.Text;
                 PhoneTextBox.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -123,6 +136,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.Email = EmailTextBox.Text;
                 EmailTextBox.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -140,6 +154,7 @@ namespace ContactAppUI.Forms
             {
                 CurrentContact.VkID = VkTextBox.Text;
                 VkTextBox.BackColor = Color.White;
+                TryUnlockCreateButton();
             }
             catch
             {
@@ -160,6 +175,38 @@ namespace ContactAppUI.Forms
             PhoneTextBox.Text = contact.PhoneNumber.Phone;
             EmailTextBox.Text = contact.Email;
             VkTextBox.Text = contact.VkID;
+        }
+
+        /// <summary>
+        /// Окрашивает пустые поля в красный цвет при создании нового контакта.
+        /// </summary>
+        private void СolorizeTextBoxes()
+        {
+            SurnameTextBox.BackColor = Color.LightCoral;
+            NameTextBox.BackColor = Color.LightCoral;
+            PhoneTextBox.BackColor = Color.LightCoral;
+            EmailTextBox.BackColor = Color.LightCoral;
+            VkTextBox.BackColor = Color.LightCoral;
+        }
+
+        /// <summary>
+        /// Проверка, что все поля прошли валидацию.
+        /// </summary>
+        /// <returns>True, если все поля прошли валидацию, иначе false.</returns>
+        private bool CheckCorrectnessFields()
+        {
+            if (SurnameTextBox.BackColor == NameTextBox.BackColor &&
+                SurnameTextBox.BackColor == PhoneTextBox.BackColor &&
+                SurnameTextBox.BackColor == EmailTextBox.BackColor &&
+                SurnameTextBox.BackColor == VkTextBox.BackColor &&
+                SurnameTextBox.BackColor == Color.White)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
