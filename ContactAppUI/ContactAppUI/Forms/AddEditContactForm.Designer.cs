@@ -117,6 +117,7 @@
             SurnameTextBox.Name = "SurnameTextBox";
             SurnameTextBox.Size = new Size(435, 23);
             SurnameTextBox.TabIndex = 6;
+            SurnameTextBox.TextChanged += SurnameTextBox_TextChanged;
             // 
             // NameTextBox
             // 
@@ -125,6 +126,7 @@
             NameTextBox.Name = "NameTextBox";
             NameTextBox.Size = new Size(435, 23);
             NameTextBox.TabIndex = 7;
+            NameTextBox.TextChanged += NameTextBox_TextChanged;
             // 
             // PhoneTextBox
             // 
@@ -133,6 +135,7 @@
             PhoneTextBox.Name = "PhoneTextBox";
             PhoneTextBox.Size = new Size(435, 23);
             PhoneTextBox.TabIndex = 8;
+            PhoneTextBox.TextChanged += PhoneTextBox_TextChanged;
             // 
             // EmailTextBox
             // 
@@ -141,6 +144,7 @@
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(435, 23);
             EmailTextBox.TabIndex = 9;
+            EmailTextBox.TextChanged += EmailTextBox_TextChanged;
             // 
             // VkTextBox
             // 
@@ -149,15 +153,18 @@
             VkTextBox.Name = "VkTextBox";
             VkTextBox.Size = new Size(435, 23);
             VkTextBox.TabIndex = 10;
+            VkTextBox.TextChanged += VkTextBox_TextChanged;
             // 
             // BirthdayDateTime
             // 
             BirthdayDateTime.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BirthdayDateTime.Location = new Point(90, 87);
+            BirthdayDateTime.MinDate = new DateTime(1901, 1, 1, 0, 0, 0, 0);
             BirthdayDateTime.Name = "BirthdayDateTime";
             BirthdayDateTime.Size = new Size(252, 23);
             BirthdayDateTime.TabIndex = 11;
             BirthdayDateTime.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+            BirthdayDateTime.ValueChanged += BirthdayDateTime_ValueChanged;
             // 
             // OkButton
             // 

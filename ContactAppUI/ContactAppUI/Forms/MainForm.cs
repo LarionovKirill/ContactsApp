@@ -1,4 +1,5 @@
-
+using ContactApp.Model;
+using ContactApp.Service;
 using ContactAppUI.Forms;
 using ContactAppUI.Properties;
 
@@ -10,9 +11,19 @@ namespace ContactAppUI
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Дата по умолчанию.
+        /// </summary>
+        private DateTime DefaultDate { get; set; } = new DateTime(2000,1,1);
+
+        /// <summary>
         /// Задает и возвращает класс формы About.
         /// </summary>
         private AboutForm AboutForm { get; set; }
+
+        /// <summary>
+        /// Список контактов.
+        /// </summary>
+        private List<Contact> Contacts { get; set; }
 
         /// <summary>
         /// Конструктор инициализации формы.
@@ -20,6 +31,8 @@ namespace ContactAppUI
         public MainForm()
         {
             InitializeComponent();
+            Contacts = Serializer.LoadFromFile();
+            UpdateContacts();
         }
 
         /// <summary>
@@ -88,6 +101,67 @@ namespace ContactAppUI
         private void DeleteContactPicture_MouseLeave(object sender, EventArgs e)
         {
             DeleteContactPicture.Image = Resources.DeleteContactIcon_512x512;
+        }
+
+        /// <summary>
+        /// Событие создания контакта.
+        /// </summary>
+        private void AddContact_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Метод обновления контактов в ListBox.
+        /// </summary>
+        private void UpdateContacts()
+        {
+            foreach (var contact in Contacts)
+            {
+                ContactsListBox.Items.Add(contact.Surname);
+            }
+        }
+
+        /// <summary>
+        /// Обновление полей с информацией об контакте.
+        /// </summary>
+        /// <param name="contact">Контакт.</param>
+        private void UpdateContactInformation(Contact contact)
+        {
+            SurnameTextBox.Text = contact.Surname;
+            NameTextBox.Text = contact.Name;
+            BirthdayDateTime.Value = contact.Birthday;
+            PhoneTextBox.Text = contact.PhoneNumber.Phone;
+            EmailTextBox.Text = contact.Email;
+            VkTextBox.Text = contact.VkID;
+        }
+
+        /// <summary>
+        /// Обработчик выбора контакта из списка.
+        /// </summary>
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = ContactsListBox.SelectedIndex;
+            if (index >= 0)
+            {
+                UpdateContactInformation(Contacts[index]);
+            }
+        }
+
+        /// <summary>
+        /// Обработчик изменения даты в главном окне.
+        /// </summary>
+        private void BirthdayDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            var index = ContactsListBox.SelectedIndex;
+            if (index >= 0)
+            {
+                BirthdayDateTime.Value = Contacts[index].Birthday;
+            }
+            else
+            {
+                BirthdayDateTime.Value = DefaultDate;
+            }
         }
     }
 }

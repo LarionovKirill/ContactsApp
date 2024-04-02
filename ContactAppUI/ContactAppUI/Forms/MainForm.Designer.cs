@@ -188,6 +188,7 @@
             AddContactPicture.SizeMode = PictureBoxSizeMode.Zoom;
             AddContactPicture.TabIndex = 0;
             AddContactPicture.TabStop = false;
+            AddContactPicture.Click += AddContact_Click;
             AddContactPicture.MouseEnter += AddContactPicture_MouseEnter;
             AddContactPicture.MouseLeave += AddContactPicture_MouseLeave;
             // 
@@ -200,6 +201,7 @@
             ContactsListBox.Name = "ContactsListBox";
             ContactsListBox.Size = new Size(230, 364);
             ContactsListBox.TabIndex = 2;
+            ContactsListBox.SelectedIndexChanged += ContactsListBox_SelectedIndexChanged;
             // 
             // EditContactPicture
             // 
@@ -234,48 +236,60 @@
             // BirthdayDateTime
             // 
             BirthdayDateTime.Location = new Point(78, 69);
+            BirthdayDateTime.MinDate = new DateTime(1901, 1, 1, 0, 0, 0, 0);
             BirthdayDateTime.Name = "BirthdayDateTime";
             BirthdayDateTime.Size = new Size(145, 23);
             BirthdayDateTime.TabIndex = 23;
             BirthdayDateTime.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+            BirthdayDateTime.ValueChanged += BirthdayDateTime_ValueChanged;
             // 
             // VkTextBox
             // 
             VkTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            VkTextBox.BackColor = SystemColors.Window;
             VkTextBox.Location = new Point(78, 156);
             VkTextBox.Name = "VkTextBox";
+            VkTextBox.ReadOnly = true;
             VkTextBox.Size = new Size(465, 23);
             VkTextBox.TabIndex = 22;
             // 
             // EmailTextBox
             // 
             EmailTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            EmailTextBox.BackColor = SystemColors.Window;
             EmailTextBox.Location = new Point(78, 127);
             EmailTextBox.Name = "EmailTextBox";
+            EmailTextBox.ReadOnly = true;
             EmailTextBox.Size = new Size(465, 23);
             EmailTextBox.TabIndex = 21;
             // 
             // PhoneTextBox
             // 
             PhoneTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PhoneTextBox.BackColor = SystemColors.Window;
             PhoneTextBox.Location = new Point(78, 98);
             PhoneTextBox.Name = "PhoneTextBox";
+            PhoneTextBox.ReadOnly = true;
             PhoneTextBox.Size = new Size(465, 23);
             PhoneTextBox.TabIndex = 20;
             // 
             // NameTextBox
             // 
             NameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NameTextBox.BackColor = SystemColors.Window;
             NameTextBox.Location = new Point(78, 40);
             NameTextBox.Name = "NameTextBox";
+            NameTextBox.ReadOnly = true;
             NameTextBox.Size = new Size(465, 23);
             NameTextBox.TabIndex = 19;
             // 
             // SurnameTextBox
             // 
             SurnameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SurnameTextBox.BackColor = SystemColors.Window;
             SurnameTextBox.Location = new Point(78, 9);
             SurnameTextBox.Name = "SurnameTextBox";
+            SurnameTextBox.ReadOnly = true;
             SurnameTextBox.Size = new Size(465, 23);
             SurnameTextBox.TabIndex = 18;
             // 
