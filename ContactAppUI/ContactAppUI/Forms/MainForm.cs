@@ -111,6 +111,12 @@ namespace ContactAppUI
             TransferContact.Data = new Contact();
             var addForm = new AddEditContactForm();
             addForm.ShowDialog();
+            if (addForm.DialogResult == DialogResult.OK)
+            {
+                Contacts.Add(TransferContact.Data);
+                Serializer.SaveToFile(Contacts);
+                UpdateContacts();
+            }
         }
 
         /// <summary>
@@ -118,6 +124,8 @@ namespace ContactAppUI
         /// </summary>
         private void UpdateContacts()
         {
+            ContactsListBox.Items.Clear();
+
             foreach (var contact in Contacts)
             {
                 ContactsListBox.Items.Add(contact.Surname);
