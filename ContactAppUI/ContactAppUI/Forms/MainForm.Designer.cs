@@ -100,20 +100,23 @@
             // addContactToolStripMenuItem
             // 
             addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            addContactToolStripMenuItem.Size = new Size(162, 22);
+            addContactToolStripMenuItem.Size = new Size(180, 22);
             addContactToolStripMenuItem.Text = "Add Contact";
+            addContactToolStripMenuItem.Click += AddContact_Click;
             // 
             // editContactToolStripMenuItem
             // 
             editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
-            editContactToolStripMenuItem.Size = new Size(162, 22);
+            editContactToolStripMenuItem.Size = new Size(180, 22);
             editContactToolStripMenuItem.Text = "Edit Contact";
+            editContactToolStripMenuItem.Click += EditContactPicture_Click;
             // 
             // removeContactToolStripMenuItem
             // 
             removeContactToolStripMenuItem.Name = "removeContactToolStripMenuItem";
-            removeContactToolStripMenuItem.Size = new Size(162, 22);
+            removeContactToolStripMenuItem.Size = new Size(180, 22);
             removeContactToolStripMenuItem.Text = "Remove Contact";
+            removeContactToolStripMenuItem.Click += DeleteContactPicture_Click;
             // 
             // helpToolStripMenuItem
             // 
@@ -126,7 +129,7 @@
             // 
             AboutMenuItem.Name = "AboutMenuItem";
             AboutMenuItem.ShortcutKeys = Keys.F1;
-            AboutMenuItem.Size = new Size(126, 22);
+            AboutMenuItem.Size = new Size(180, 22);
             AboutMenuItem.Text = "About";
             AboutMenuItem.Click += AboutMenuItem_Click;
             // 
@@ -175,6 +178,7 @@
             DeleteContactPicture.SizeMode = PictureBoxSizeMode.Zoom;
             DeleteContactPicture.TabIndex = 1;
             DeleteContactPicture.TabStop = false;
+            DeleteContactPicture.Click += DeleteContactPicture_Click;
             DeleteContactPicture.MouseEnter += DeleteContactPicture_MouseEnter;
             DeleteContactPicture.MouseLeave += DeleteContactPicture_MouseLeave;
             // 
@@ -213,6 +217,7 @@
             EditContactPicture.SizeMode = PictureBoxSizeMode.Zoom;
             EditContactPicture.TabIndex = 0;
             EditContactPicture.TabStop = false;
+            EditContactPicture.Click += EditContactPicture_Click;
             EditContactPicture.MouseEnter += EditContactPicture_MouseEnter;
             EditContactPicture.MouseLeave += EditContactPicture_MouseLeave;
             // 

@@ -13,7 +13,7 @@ namespace ContactAppUI
         /// <summary>
         /// Дата по умолчанию.
         /// </summary>
-        private DateTime DefaultDate { get; set; } = new DateTime(2000,1,1);
+        private DateTime DefaultDate { get; set; } = new DateTime(2000, 1, 1);
 
         /// <summary>
         /// Задает и возвращает класс формы About.
@@ -171,6 +171,54 @@ namespace ContactAppUI
             else
             {
                 BirthdayDateTime.Value = DefaultDate;
+            }
+        }
+
+        /// <summary>
+        /// Изменение созданного контакта.
+        /// </summary>
+        private void EditContactPicture_Click(object sender, EventArgs e)
+        {
+            var index = ContactsListBox.SelectedIndex;
+            if (index >= 0)
+            {
+                TransferContact.Data = Contacts[index];
+                var addForm = new AddEditContactForm();
+                addForm.ShowDialog();
+                if (addForm.DialogResult == DialogResult.OK)
+                {
+                    Contacts[index] = TransferContact.Data;
+                    Serializer.SaveToFile(Contacts);
+                    UpdateContacts();
+                    ContactsListBox.SelectedIndex = index;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать контакт, который хотите редактировать",
+                    "Ошибка",
+                    MessageBoxButtons.OK);
+            }
+        }
+
+        /// <summary>
+        /// Удаление контакта.
+        /// </summary>
+        private void DeleteContactPicture_Click(object sender, EventArgs e)
+        {
+            var index = ContactsListBox.SelectedIndex;
+            if (index >= 0)
+            {
+                Contacts.RemoveAt(index);
+                Serializer.SaveToFile(Contacts);
+                UpdateContacts();
+                ContactsListBox.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать контакт, который хотите удалить",
+                    "Ошибка",
+                    MessageBoxButtons.OK);
             }
         }
     }
