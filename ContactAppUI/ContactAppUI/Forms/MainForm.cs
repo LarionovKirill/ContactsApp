@@ -218,7 +218,8 @@ namespace ContactAppUI
                     Contacts.RemoveAt(index);
                     Serializer.SaveToFile(Contacts);
                     UpdateContacts();
-                    ContactsListBox.SelectedIndex = 0;
+                    ContactsListBox.SelectedIndex = -1;
+                    ClearTextBoxes();
                 }
             }
             else
@@ -227,6 +228,19 @@ namespace ContactAppUI
                     "Ошибка",
                     MessageBoxButtons.OK);
             }
+        }
+
+        /// <summary>
+        /// Очищает поля контактов после удаления.
+        /// </summary>
+        private void ClearTextBoxes()
+        {
+            SurnameTextBox.Text = string.Empty;
+            NameTextBox.Text = string.Empty;
+            EmailTextBox.Text = string.Empty;
+            VkTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            BirthdayDateTime.Value = new DateTime(2000,1,1);
         }
     }
 }
