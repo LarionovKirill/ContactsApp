@@ -24,6 +24,7 @@ namespace ContactAppUI.Forms
             {
                 BlockCreateButton();
                 СolorizeTextBoxes();
+                CurrentContact.Birthday = BirthdayDateTime.Value;
             }
             else
             {

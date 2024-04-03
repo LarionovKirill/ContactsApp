@@ -209,10 +209,17 @@ namespace ContactAppUI
             var index = ContactsListBox.SelectedIndex;
             if (index >= 0)
             {
-                Contacts.RemoveAt(index);
-                Serializer.SaveToFile(Contacts);
-                UpdateContacts();
-                ContactsListBox.SelectedIndex = 0;
+                DialogResult warning = MessageBox.Show(
+                    $"Do you really want to remove this contact: {Contacts[index].Surname}",
+                    "Warning",
+                    MessageBoxButtons.YesNo);
+                if (warning == DialogResult.Yes)
+                {
+                    Contacts.RemoveAt(index);
+                    Serializer.SaveToFile(Contacts);
+                    UpdateContacts();
+                    ContactsListBox.SelectedIndex = 0;
+                }
             }
             else
             {
