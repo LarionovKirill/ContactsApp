@@ -159,6 +159,7 @@
             // 
             BirthdayDateTime.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BirthdayDateTime.Location = new Point(90, 87);
+            BirthdayDateTime.MaxDate = new DateTime(2024, 4, 3, 14, 40, 14, 0);
             BirthdayDateTime.MinDate = new DateTime(1901, 1, 1, 0, 0, 0, 0);
             BirthdayDateTime.Name = "BirthdayDateTime";
             BirthdayDateTime.Size = new Size(252, 23);

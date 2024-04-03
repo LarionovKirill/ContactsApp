@@ -19,6 +19,7 @@ namespace ContactAppUI.Forms
         public AddEditContactForm()
         {
             InitializeComponent();
+            BirthdayDateTime.MaxDate = DateTime.Now;
             CurrentContact = TransferContact.Data;
             if (CurrentContact.Surname == null)
             {
