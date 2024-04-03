@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
+            MenuStrip = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             ExitMenuItem = new ToolStripMenuItem();
             EditMenuItem = new ToolStripMenuItem();
@@ -56,7 +56,7 @@
             BirthdayLabel = new Label();
             NameLabel = new Label();
             SurnameLabel = new Label();
-            menuStrip1.SuspendLayout();
+            MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SplitContainer).BeginInit();
             SplitContainer.Panel1.SuspendLayout();
             SplitContainer.Panel2.SuspendLayout();
@@ -66,14 +66,14 @@
             ((System.ComponentModel.ISupportInitialize)EditContactPicture).BeginInit();
             SuspendLayout();
             // 
-            // menuStrip1
+            // MenuStrip
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, EditMenuItem, helpToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(804, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            MenuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, EditMenuItem, helpToolStripMenuItem });
+            MenuStrip.Location = new Point(0, 0);
+            MenuStrip.Name = "MenuStrip";
+            MenuStrip.Size = new Size(804, 24);
+            MenuStrip.TabIndex = 0;
+            MenuStrip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -100,21 +100,21 @@
             // addContactToolStripMenuItem
             // 
             addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            addContactToolStripMenuItem.Size = new Size(180, 22);
+            addContactToolStripMenuItem.Size = new Size(162, 22);
             addContactToolStripMenuItem.Text = "Add Contact";
             addContactToolStripMenuItem.Click += AddContact_Click;
             // 
             // editContactToolStripMenuItem
             // 
             editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
-            editContactToolStripMenuItem.Size = new Size(180, 22);
+            editContactToolStripMenuItem.Size = new Size(162, 22);
             editContactToolStripMenuItem.Text = "Edit Contact";
             editContactToolStripMenuItem.Click += EditContactPicture_Click;
             // 
             // removeContactToolStripMenuItem
             // 
             removeContactToolStripMenuItem.Name = "removeContactToolStripMenuItem";
-            removeContactToolStripMenuItem.Size = new Size(180, 22);
+            removeContactToolStripMenuItem.Size = new Size(162, 22);
             removeContactToolStripMenuItem.Text = "Remove Contact";
             removeContactToolStripMenuItem.Click += DeleteContactPicture_Click;
             // 
@@ -129,7 +129,7 @@
             // 
             AboutMenuItem.Name = "AboutMenuItem";
             AboutMenuItem.ShortcutKeys = Keys.F1;
-            AboutMenuItem.Size = new Size(180, 22);
+            AboutMenuItem.Size = new Size(126, 22);
             AboutMenuItem.Text = "About";
             AboutMenuItem.Click += AboutMenuItem_Click;
             // 
@@ -370,12 +370,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 470);
             Controls.Add(SplitContainer);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(MenuStrip);
+            MainMenuStrip = MenuStrip;
             Name = "MainForm";
             Text = "ContactApp";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            MenuStrip.ResumeLayout(false);
+            MenuStrip.PerformLayout();
             SplitContainer.Panel1.ResumeLayout(false);
             SplitContainer.Panel1.PerformLayout();
             SplitContainer.Panel2.ResumeLayout(false);
@@ -391,7 +391,7 @@
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip MenuStrip;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem EditMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;

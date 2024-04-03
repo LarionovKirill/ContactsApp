@@ -26,7 +26,7 @@ namespace ContactAppUI
         private List<Contact> Contacts { get; set; }
 
         /// <summary>
-        /// Конструктор инициализации формы.
+        /// Конструктор формы.
         /// </summary>
         public MainForm()
         {
