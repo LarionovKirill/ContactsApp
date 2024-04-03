@@ -49,6 +49,9 @@ namespace ContactAppUI.Forms
             OkButton.Enabled = false;
         }
 
+        /// <summary>
+        /// Метод проверяет, можно ли разблокировать кнопку для принятия изменений.
+        /// </summary>
         private void TryUnlockCreateButton()
         {
             if (CheckCorrectnessFields())
