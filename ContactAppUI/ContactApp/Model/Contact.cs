@@ -42,7 +42,7 @@ namespace ContactApp.Model
         /// </summary>
         public Contact()
         {
-            
+            PhoneNumber = new PhoneNumber();
         }
 
         /// <summary>
