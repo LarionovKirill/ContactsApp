@@ -31,7 +31,7 @@ namespace ContactAppUI
         public MainForm()
         {
             InitializeComponent();
-            Contacts = Serializer.LoadFromFile();
+            Contacts = Serializer.LoadFromFile(Paths.PathToFiles);
             UpdateContacts();
         }
 
@@ -114,7 +114,7 @@ namespace ContactAppUI
             if (addForm.DialogResult == DialogResult.OK)
             {
                 Contacts.Add(TransferContact.Data);
-                Serializer.SaveToFile(Contacts);
+                Serializer.SaveToFile(Contacts, Paths.PathToFiles);
                 UpdateContacts();
             }
         }
@@ -188,7 +188,7 @@ namespace ContactAppUI
                 if (addForm.DialogResult == DialogResult.OK)
                 {
                     Contacts[index] = TransferContact.Data;
-                    Serializer.SaveToFile(Contacts);
+                    Serializer.SaveToFile(Contacts, Paths.PathToFiles);
                     UpdateContacts();
                     ContactsListBox.SelectedIndex = index;
                 }
@@ -216,7 +216,7 @@ namespace ContactAppUI
                 if (warning == DialogResult.Yes)
                 {
                     Contacts.RemoveAt(index);
-                    Serializer.SaveToFile(Contacts);
+                    Serializer.SaveToFile(Contacts, Paths.PathToFiles);
                     UpdateContacts();
                     ContactsListBox.SelectedIndex = -1;
                     ClearTextBoxes();
