@@ -166,5 +166,30 @@ namespace ContactApp.Model
                 _phoneNumber = value;
             }
         }
+
+        /// <summary>
+        /// Переопределнный метод сравнения контактов.
+        /// </summary>
+        /// <param name="obj">Объект сравнения.</param>
+        /// <returns>True, если все поля совпадают по значению.</returns>
+        public override bool Equals(object? obj)
+        {
+            Contact contact;
+            if (obj is Contact)
+            {
+                contact = (Contact)obj;
+            }
+            else
+            {
+                return false;
+            }
+            return (
+                this.Surname == contact.Surname &&
+                this.Name == contact.Name &&
+                this.Email == contact.Email &&
+                this.PhoneNumber.Phone == contact.PhoneNumber.Phone &&
+                this.VkID == contact.VkID &&
+                this.Birthday == contact.Birthday);
+        }
     }
 }
