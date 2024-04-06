@@ -279,5 +279,38 @@ namespace ContactAppUI
                 UpdateContacts(FoundedContacts);
             }
         }
+
+        /// <summary>
+        /// Удаление контакта при помощи кнопки delete.
+        /// </summary>
+        private void ContactsListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                var index = ContactsListBox.SelectedIndex;
+                if (index >= 0)
+                {
+                    DialogResult warning = MessageBox.Show(
+                        $"Do you really want to remove this contact: {Contacts[index].Surname}",
+                        "Warning",
+                        MessageBoxButtons.YesNo);
+                    if (warning == DialogResult.Yes)
+                    {
+                        Contacts.RemoveAt(index);
+                        Serializer.SaveToFile(Contacts, Paths.PathToFiles);
+                        Contacts = Sorter.SortContacts(Contacts);
+                        UpdateContacts(Contacts);
+                        ContactsListBox.SelectedIndex = -1;
+                        ClearTextBoxes();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Необходимо выбрать контакт, который хотите удалить",
+                        "Ошибка",
+                        MessageBoxButtons.OK);
+                }
+            }
+        }
     }
 }

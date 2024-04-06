@@ -213,6 +213,7 @@
             ContactsListBox.Size = new Size(230, 364);
             ContactsListBox.TabIndex = 2;
             ContactsListBox.SelectedIndexChanged += ContactsListBox_SelectedIndexChanged;
+            ContactsListBox.KeyDown += ContactsListBox_KeyDown;
             // 
             // EditContactPicture
             // 
