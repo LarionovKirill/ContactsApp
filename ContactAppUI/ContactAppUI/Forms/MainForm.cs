@@ -26,13 +26,20 @@ namespace ContactAppUI
         private List<Contact> Contacts { get; set; }
 
         /// <summary>
+        /// Список контактов.
+        /// </summary>
+        private List<Contact> FoundedContacts { get; set; }
+
+        /// <summary>
         /// Конструктор формы.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
             Contacts = Serializer.LoadFromFile(Paths.PathToFiles);
-            UpdateContacts();
+            Contacts = Sorter.SortContacts(Contacts);
+            UpdateContacts(Contacts);
+            BirthdayBoyLabel.Text = Sorter.GetBirthdayBoys(Contacts, DateTime.Now);
         }
 
         /// <summary>
@@ -115,18 +122,19 @@ namespace ContactAppUI
             {
                 Contacts.Add(TransferContact.Data);
                 Serializer.SaveToFile(Contacts, Paths.PathToFiles);
-                UpdateContacts();
+                Contacts = Sorter.SortContacts(Contacts);
+                UpdateContacts(Contacts);
             }
         }
 
         /// <summary>
         /// Метод обновления контактов в ListBox.
         /// </summary>
-        private void UpdateContacts()
+        private void UpdateContacts(List<Contact> contacts)
         {
             ContactsListBox.Items.Clear();
 
-            foreach (var contact in Contacts)
+            foreach (var contact in contacts)
             {
                 ContactsListBox.Items.Add(contact.Surname);
             }
@@ -152,9 +160,19 @@ namespace ContactAppUI
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var index = ContactsListBox.SelectedIndex;
-            if (index >= 0)
+            if (FindContactTextBox.Text == string.Empty)
             {
-                UpdateContactInformation(Contacts[index]);
+                if (index >= 0)
+                {
+                    UpdateContactInformation(Contacts[index]);
+                }
+            }
+            else
+            {
+                if (index >= 0)
+                {
+                    UpdateContactInformation(FoundedContacts[index]);
+                }
             }
         }
 
@@ -189,7 +207,8 @@ namespace ContactAppUI
                 {
                     Contacts[index] = TransferContact.Data;
                     Serializer.SaveToFile(Contacts, Paths.PathToFiles);
-                    UpdateContacts();
+                    Contacts = Sorter.SortContacts(Contacts);
+                    UpdateContacts(Contacts);
                     ContactsListBox.SelectedIndex = index;
                 }
             }
@@ -217,7 +236,8 @@ namespace ContactAppUI
                 {
                     Contacts.RemoveAt(index);
                     Serializer.SaveToFile(Contacts, Paths.PathToFiles);
-                    UpdateContacts();
+                    Contacts = Sorter.SortContacts(Contacts);
+                    UpdateContacts(Contacts);
                     ContactsListBox.SelectedIndex = -1;
                     ClearTextBoxes();
                 }
@@ -240,7 +260,24 @@ namespace ContactAppUI
             EmailTextBox.Text = string.Empty;
             VkTextBox.Text = string.Empty;
             PhoneTextBox.Text = string.Empty;
-            BirthdayDateTime.Value = new DateTime(2000,1,1);
+            BirthdayDateTime.Value = new DateTime(2000, 1, 1);
+        }
+
+        /// <summary>
+        /// Поиск контактов по имени или фамилии.
+        /// </summary>
+        private void FindContactTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var mask = FindContactTextBox.Text;
+            if (mask == string.Empty)
+            {
+                UpdateContacts(Contacts);
+            }
+            else
+            {
+                FoundedContacts = Sorter.SortContacts(Contacts, mask);
+                UpdateContacts(FoundedContacts);
+            }
         }
     }
 }

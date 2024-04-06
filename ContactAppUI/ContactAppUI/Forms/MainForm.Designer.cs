@@ -44,6 +44,10 @@
             EditContactPicture = new PictureBox();
             FindContactTextBox = new TextBox();
             FindLabel = new Label();
+            BirthdayPanel = new Panel();
+            BirthdayBoyLabel = new Label();
+            BirthdayWarningLabel = new Label();
+            pictureBox1 = new PictureBox();
             BirthdayDateTime = new DateTimePicker();
             VkTextBox = new TextBox();
             EmailTextBox = new TextBox();
@@ -64,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)DeleteContactPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AddContactPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EditContactPicture).BeginInit();
+            BirthdayPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // MenuStrip
@@ -151,6 +157,7 @@
             // 
             // SplitContainer.Panel2
             // 
+            SplitContainer.Panel2.Controls.Add(BirthdayPanel);
             SplitContainer.Panel2.Controls.Add(BirthdayDateTime);
             SplitContainer.Panel2.Controls.Add(VkTextBox);
             SplitContainer.Panel2.Controls.Add(EmailTextBox);
@@ -228,6 +235,7 @@
             FindContactTextBox.Name = "FindContactTextBox";
             FindContactTextBox.Size = new Size(194, 23);
             FindContactTextBox.TabIndex = 1;
+            FindContactTextBox.TextChanged += FindContactTextBox_TextChanged;
             // 
             // FindLabel
             // 
@@ -237,6 +245,46 @@
             FindLabel.Size = new Size(33, 15);
             FindLabel.TabIndex = 0;
             FindLabel.Text = "Find:";
+            // 
+            // BirthdayPanel
+            // 
+            BirthdayPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BirthdayPanel.BackColor = SystemColors.ActiveCaption;
+            BirthdayPanel.Controls.Add(BirthdayBoyLabel);
+            BirthdayPanel.Controls.Add(BirthdayWarningLabel);
+            BirthdayPanel.Controls.Add(pictureBox1);
+            BirthdayPanel.Location = new Point(3, 348);
+            BirthdayPanel.Name = "BirthdayPanel";
+            BirthdayPanel.Size = new Size(552, 98);
+            BirthdayPanel.TabIndex = 24;
+            // 
+            // BirthdayBoyLabel
+            // 
+            BirthdayBoyLabel.AutoSize = true;
+            BirthdayBoyLabel.Location = new Point(101, 40);
+            BirthdayBoyLabel.Name = "BirthdayBoyLabel";
+            BirthdayBoyLabel.Size = new Size(27, 15);
+            BirthdayBoyLabel.TabIndex = 25;
+            BirthdayBoyLabel.Text = "fffff";
+            // 
+            // BirthdayWarningLabel
+            // 
+            BirthdayWarningLabel.AutoSize = true;
+            BirthdayWarningLabel.Location = new Point(101, 25);
+            BirthdayWarningLabel.Name = "BirthdayWarningLabel";
+            BirthdayWarningLabel.Size = new Size(141, 15);
+            BirthdayWarningLabel.TabIndex = 25;
+            BirthdayWarningLabel.Text = "Сегодня день рождения:";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Warning_512x512;
+            pictureBox1.Location = new Point(12, 13);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(83, 73);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
             // 
             // BirthdayDateTime
             // 
@@ -372,6 +420,7 @@
             Controls.Add(SplitContainer);
             Controls.Add(MenuStrip);
             MainMenuStrip = MenuStrip;
+            MinimumSize = new Size(820, 509);
             Name = "MainForm";
             Text = "ContactApp";
             MenuStrip.ResumeLayout(false);
@@ -385,6 +434,9 @@
             ((System.ComponentModel.ISupportInitialize)DeleteContactPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)AddContactPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)EditContactPicture).EndInit();
+            BirthdayPanel.ResumeLayout(false);
+            BirthdayPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -419,5 +471,9 @@
         private Label BirthdayLabel;
         private Label NameLabel;
         private Label SurnameLabel;
+        private Panel BirthdayPanel;
+        private PictureBox pictureBox1;
+        private Label BirthdayBoyLabel;
+        private Label BirthdayWarningLabel;
     }
 }

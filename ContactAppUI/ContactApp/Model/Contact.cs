@@ -5,7 +5,7 @@ namespace ContactApp.Model
     /// <summary>
     /// Класс контакта пользователя.
     /// </summary>
-    public class Contact
+    public class Contact : IComparable<Contact>
     {
         /// <summary>
         /// Фамилия контакта.
@@ -164,6 +164,28 @@ namespace ContactApp.Model
             set
             {
                 _phoneNumber = value;
+            }
+        }
+
+        /// <summary>
+        /// Метод сравнения 2 массивов для сортировки.
+        /// </summary>
+        /// <param name="other">Объект сравнения.</param>
+        /// <returns>Меньше нуля. Значит, текущий объект должен находиться перед объектом, 
+        /// который передается в качестве параметра
+        /// Равен нулю.Значит, оба объекта равны
+        ///Больше нуля.Значит, текущий объект должен находиться после объекта, 
+        ///передаваемого в качестве параметра</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(Contact? other)
+        {
+            if (other is Contact)
+            {
+                return Surname.CompareTo(other.Surname);
+            }
+            else
+            {
+                throw new ArgumentException();
             }
         }
 
