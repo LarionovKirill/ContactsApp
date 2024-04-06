@@ -264,9 +264,8 @@
             BirthdayBoyLabel.AutoSize = true;
             BirthdayBoyLabel.Location = new Point(101, 40);
             BirthdayBoyLabel.Name = "BirthdayBoyLabel";
-            BirthdayBoyLabel.Size = new Size(27, 15);
+            BirthdayBoyLabel.Size = new Size(0, 15);
             BirthdayBoyLabel.TabIndex = 25;
-            BirthdayBoyLabel.Text = "fffff";
             // 
             // BirthdayWarningLabel
             // 

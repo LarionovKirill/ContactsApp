@@ -83,7 +83,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
-                _surname = value;
+                _surname = Validator.CreateFirstSymbolUpper(value);
             }
         }
 
@@ -99,7 +99,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
-                _name = value;
+                _name = Validator.CreateFirstSymbolUpper(value);
             }
         }
 

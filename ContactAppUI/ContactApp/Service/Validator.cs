@@ -29,7 +29,7 @@ namespace ContactApp.Service
         /// которой еще не было на данный момент.</exception>
         public static void CheckBirthDay(DateTime birtday)
         {
-            if (birtday > DateTime.Now || birtday.Year<1900)
+            if (birtday > DateTime.Now || birtday.Year < 1900)
             {
                 throw new ArgumentException();
             }
@@ -42,9 +42,9 @@ namespace ContactApp.Service
         /// <exception cref="ArgumentException"></exception>
         public static void CheckPhoneNumber(string number)
         {
-            if (number.Length != 11 || 
-                number[0] != '7' || 
-                HasOtherSymbols(number) || 
+            if (number.Length != 11 ||
+                number[0] != '7' ||
+                HasOtherSymbols(number) ||
                 number.Length == 0)
             {
                 throw new ArgumentException();
@@ -75,12 +75,25 @@ namespace ContactApp.Service
         /// <exception cref="ArgumentException"></exception>
         public static void IsThatStringEmail(string email)
         {
-            if (email.IndexOf('@') != email.LastIndexOf('@') || 
-                (email.LastIndexOf('.')< email.LastIndexOf('@')) ||
+            if (email.IndexOf('@') != email.LastIndexOf('@') ||
+                (email.LastIndexOf('.') < email.LastIndexOf('@')) ||
                 (email.IndexOf('@') == -1))
             {
                 throw new ArgumentException();
             }
+        }
+
+        /// <summary>
+        /// Делает первый символ переданной строки в верхний регистр.
+        /// </summary>
+        /// <param name="str">Переданная строка.</param>
+        /// <returns>Строку в верхнем регистре.</returns>
+        public static string CreateFirstSymbolUpper(string str)
+        {
+            var a = str[0].ToString();
+            a = a.ToUpper();
+            var b = a + str.Substring(1, str.Length-1);
+            return b;
         }
     }
 }
