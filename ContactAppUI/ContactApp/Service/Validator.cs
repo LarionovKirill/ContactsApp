@@ -67,5 +67,20 @@ namespace ContactApp.Service
             }
             return false;
         }
+
+        /// <summary>
+        /// Проверяет, соответсвует ли строка адресу электронной почты.
+        /// </summary>
+        /// <param name="email">Строка почты.</param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void IsThatStringEmail(string email)
+        {
+            if (email.IndexOf('@') != email.LastIndexOf('@') || 
+                (email.LastIndexOf('.')< email.LastIndexOf('@')) ||
+                (email.IndexOf('@') == -1))
+            {
+                throw new ArgumentException();
+            }
+        }
     }
 }

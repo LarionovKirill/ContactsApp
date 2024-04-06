@@ -115,6 +115,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
+                Validator.IsThatStringEmail(value);
                 _email = value;
             }
         }

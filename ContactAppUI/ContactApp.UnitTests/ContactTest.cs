@@ -77,7 +77,7 @@ namespace ContactApp.UnitTests
         }
 
         /// <summary>
-        /// Позитивный тест сеттера Surname.
+        /// Позитивный тест сеттера Name.
         /// </summary>
         [Test(Description = "Позитивный тест геттера Name.")]
         public void TestNameSetCurrentValue()
@@ -106,9 +106,9 @@ namespace ContactApp.UnitTests
         }
 
         /// <summary>
-        /// Позитивный тест геттера Surname.
+        /// Позитивный тест геттера Email.
         /// </summary>
-        [Test(Description = "Позитивный тест геттера Surname.")]
+        [Test(Description = "Позитивный тест геттера Email.")]
         public void TestEmailGetCurrentValue()
         {
             var expected = "Something@Gmail.com";
@@ -118,12 +118,12 @@ namespace ContactApp.UnitTests
         }
 
         /// <summary>
-        /// Позитивный тест сеттера Surname.
+        /// Позитивный тест сеттера Email.
         /// </summary>
-        [Test(Description = "Позитивный тест геттера Surname.")]
+        [Test(Description = "Позитивный тест геттера Email.")]
         public void TestEmailSetCurrentValue()
         {
-            var expected = "Смирнов";
+            var expected = "Something@Gmail.com";
             _contact.Email = expected;
             var actual = _contact.Email;
             Assert.AreEqual(expected, actual);
@@ -139,6 +139,15 @@ namespace ContactApp.UnitTests
         [TestCase("Something@gmaillllllllllllllllllllllllllllllllllllllllll.com",
             "Должно возникать исключение, если Email длиннее 50 символов",
             TestName = "Присвоение неправильного Email больше 50 символов")]
+        [TestCase("Something@gmail@.com",
+            "Должно возникать исключение, если Email имеет больше 1 символа @",
+            TestName = "Присвоение неправильного Email, который имеет больше 1 @")]
+        [TestCase("Something@gmail",
+            "Должно возникать исключение, если Email имеет неполное доменное имя",
+            TestName = "Присвоение неправильного Email с неправильным доменным именем.")]
+        [TestCase("Somethinggmail.com",
+            "Должно возникать исключение, если Email не имеет знака @",
+            TestName = "Присвоение неправильного Email без знака@.")]
         public void TestEmailSetArgumentException(string wrongSurname, string message)
         {
             Assert.Throws<ArgumentException>(
@@ -159,9 +168,9 @@ namespace ContactApp.UnitTests
         }
 
         /// <summary>
-        /// Позитивный тест сеттера Surname.
+        /// Позитивный тест сеттера VkID.
         /// </summary>
-        [Test(Description = "Позитивный тест геттера Name.")]
+        [Test(Description = "Позитивный тест геттера VkID.")]
         public void TestVkIDSetCurrentValue()
         {
             var expected = "id44994940";
