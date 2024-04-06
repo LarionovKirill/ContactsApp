@@ -9,7 +9,8 @@
         /// Путь к файлу для сохранения рабочих данных.
         /// </summary>
         public static readonly string PathToFiles =
-            Path.Combine(AppContext.BaseDirectory, "Contacts.json");
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "Contacts.json");
 
         /// <summary>
         /// Путь к файлу для сохранения тестовых данных.
