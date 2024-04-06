@@ -146,10 +146,14 @@ namespace ContactAppUI
         /// <param name="contact">Контакт.</param>
         private void UpdateContactInformation(Contact contact)
         {
+            //Форматирование телефона.
+            var intPhone = long.Parse(contact.PhoneNumber.Phone);
+            var phone = string.Format("{0:+# (###) ###-##-##}", intPhone);
+
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
             BirthdayDateTime.Value = contact.Birthday;
-            PhoneTextBox.Text = contact.PhoneNumber.Phone;
+            PhoneTextBox.Text = phone;
             EmailTextBox.Text = contact.Email;
             VkTextBox.Text = contact.VkID;
         }
