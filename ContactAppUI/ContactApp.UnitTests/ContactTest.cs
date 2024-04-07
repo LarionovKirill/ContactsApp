@@ -261,5 +261,130 @@ namespace ContactApp.UnitTests
                 "78901234567"
                 ));
         }
+
+        /// <summary>
+        /// Тестирвание метода клонирования контакта.
+        /// </summary>
+        [Test(Description = "Тестирование метода клонирования класса.")]
+        public void TestCloneContact()
+        {
+            _contact = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var clone = (Contact)_contact.Clone();
+            var result = (
+                clone.Name == _contact.Name &&
+                clone.Surname == _contact.Surname &&
+                clone.Email == _contact.Email &&
+                clone.Birthday == _contact.Birthday &&
+                clone.VkID == _contact.VkID &&
+                clone.PhoneNumber.Phone == _contact.PhoneNumber.Phone);
+            Assert.IsTrue( result );
+        }
+
+        /// <summary>
+        /// Тестирвание метода равенства контакта.
+        /// </summary>
+        [Test(Description = "Тестирование метода равенства класса.")]
+        public void TestEqualsContact()
+        {
+            _contact = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var clone = (Contact)_contact.Clone();
+            var result = clone.Equals(_contact);
+            Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Тестирвание метода сравнения классов по имени контакта.
+        /// </summary>
+        [Test(Description = "Тестирование метода сравнения класса.")]
+        public void TestCompareToLessContact()
+        {
+            _contact = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var actual = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var number = actual.CompareTo(_contact);
+            var result = (number==0);
+            Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Тестирвание метода сравнения классов по имени контакта.
+        /// </summary>
+        [Test(Description = "Тестирование метода сравнения класса.")]
+        public void TestCompareToEqualContact()
+        {
+            _contact = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var actual = new Contact(
+                "Яровой",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var number = actual.CompareTo(_contact);
+            var result = (number > 0);
+            Assert.IsTrue(result);
+        }
+
+        /// <summary>
+        /// Тестирвание метода сравнения классов по имени контакта.
+        /// </summary>
+        [Test(Description = "Тестирование метода сравнения класса.")]
+        public void TestCompareToMoreContact()
+        {
+            _contact = new Contact(
+                "Иванов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var actual = new Contact(
+                "Агафонов",
+                "Иван",
+                "Ivanov@mail.ru",
+                new DateTime(2000, 1, 1),
+                "id49499494",
+                "78901234567"
+                );
+            var number = actual.CompareTo(_contact);
+            var result = (number < 0);
+            Assert.IsTrue(result);
+        }
     }
 }
