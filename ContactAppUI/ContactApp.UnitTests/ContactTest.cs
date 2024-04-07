@@ -94,7 +94,7 @@ namespace ContactApp.UnitTests
         /// <param name="wrongSurname">Неверное поле Имени.</param>
         /// <param name="message">Текст ошибки.</param>
         [TestCase("", "Должно возникать исключение, если имя - пустая строка",
-            TestName = "Присвоение пустой строки в качестве фамилии")]
+            TestName = "Присвоение пустой строки в качестве имени")]
         [TestCase("ИванИванИванИванИванИванИванИванИванИванИванИванИванИванИванИванИванИван",
             "Должно возникать исключение, если имя длиннее 50 символов",
             TestName = "Присвоение неправильного имени больше 50 символов")]
@@ -185,9 +185,8 @@ namespace ContactApp.UnitTests
         /// <param name="wrongSurname">Неверное поле VkID.</param>
         /// <param name="message">Текст ошибки.</param>
         [TestCase("", "Должно возникать исключение, если VkID - пустая строка",
-            TestName = "Присвоение пустой строки в качестве фамилии")]
-        [TestCase("id490323385233439000000000903",
-            "Должно возникать исключение, если VkID длиннее 15 символов",
+            TestName = "Присвоение пустой строки в качестве VkID")]
+        [TestCase("id490323385233439000000000903", "Должно возникать исключение, если VkID длиннее 15 символов",
             TestName = "Присвоение неправильного VkID больше 15 символов")]
         public void TestVkIDSetArgumentException(string wrongSurname, string message)
         {
@@ -212,7 +211,7 @@ namespace ContactApp.UnitTests
         /// Позитивный тест сеттера Birthday.
         /// </summary>
         [Test(Description = "Позитивный тест геттера Birthday.")]
-        public void TestBirthdayIDSetCurrentValue()
+        public void TestBirthdaySetCurrentValue()
         {
             var expected = new DateTime(2000, 1, 1);
             _contact.Birthday = expected;
@@ -227,7 +226,7 @@ namespace ContactApp.UnitTests
         /// <param name="message">Текст ошибки.</param>
         [TestCase("01/20/1000", "Должно возникать исключение, если Birthday " +
             "дата раньше 1900 года",
-            TestName = "Присвоение пустой строки в качестве фамилии")]
+            TestName = "Присвоение даты раньше 1900 года")]
         [TestCase("01/20/3000",
             "Должно возникать исключение, если Birthday дата, которая еще не наступила.",
             TestName = "Присвоение неправильного Birthday которая еще не наступила.")]
