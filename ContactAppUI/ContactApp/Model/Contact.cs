@@ -5,7 +5,7 @@ namespace ContactApp.Model
     /// <summary>
     /// Класс контакта пользователя.
     /// </summary>
-    public class Contact : IComparable<Contact>
+    public class Contact : IComparable<Contact>, ICloneable
     {
         /// <summary>
         /// Фамилия контакта.
@@ -165,6 +165,23 @@ namespace ContactApp.Model
             {
                 _phoneNumber = value;
             }
+        }
+
+        /// <summary>
+        /// Метод создания клона объекта контакта.
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new Contact
+                (
+                Surname,
+                Name,
+                Email,
+                Birthday,
+                VkID,
+                PhoneNumber.Phone
+                );
         }
 
         /// <summary>

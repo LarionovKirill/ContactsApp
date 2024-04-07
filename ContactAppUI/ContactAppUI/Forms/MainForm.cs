@@ -204,7 +204,7 @@ namespace ContactAppUI
             var index = ContactsListBox.SelectedIndex;
             if (index >= 0)
             {
-                TransferContact.Data = Contacts[index];
+                TransferContact.Data = (Contact)Contacts[index].Clone();
                 var addForm = new AddEditContactForm();
                 addForm.ShowDialog();
                 if (addForm.DialogResult == DialogResult.OK)
