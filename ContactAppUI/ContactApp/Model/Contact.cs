@@ -5,7 +5,7 @@ namespace ContactApp.Model
     /// <summary>
     /// Класс контакта пользователя.
     /// </summary>
-    public class Contact
+    public class Contact : IComparable<Contact>, ICloneable
     {
         /// <summary>
         /// Фамилия контакта.
@@ -83,7 +83,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
-                _surname = value;
+                _surname = Validator.CreateFirstSymbolUpper(value);
             }
         }
 
@@ -99,7 +99,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
-                _name = value;
+                _name = Validator.CreateFirstSymbolUpper(value);
             }
         }
 
@@ -115,6 +115,7 @@ namespace ContactApp.Model
             set
             {
                 Validator.СheckMaxStringLength(value, 50);
+                Validator.IsThatStringEmail(value);
                 _email = value;
             }
         }
@@ -164,6 +165,70 @@ namespace ContactApp.Model
             {
                 _phoneNumber = value;
             }
+        }
+
+        /// <summary>
+        /// Метод создания клона объекта контакта.
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new Contact
+                (
+                Surname,
+                Name,
+                Email,
+                Birthday,
+                VkID,
+                PhoneNumber.Phone
+                );
+        }
+
+        /// <summary>
+        /// Метод сравнения 2 массивов для сортировки.
+        /// </summary>
+        /// <param name="other">Объект сравнения.</param>
+        /// <returns>Меньше нуля. Значит, текущий объект должен находиться перед объектом, 
+        /// который передается в качестве параметра
+        /// Равен нулю.Значит, оба объекта равны
+        ///Больше нуля.Значит, текущий объект должен находиться после объекта, 
+        ///передаваемого в качестве параметра</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(Contact? other)
+        {
+            if (other is Contact)
+            {
+                return Surname.CompareTo(other.Surname);
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// Переопределнный метод сравнения контактов.
+        /// </summary>
+        /// <param name="obj">Объект сравнения.</param>
+        /// <returns>True, если все поля совпадают по значению.</returns>
+        public override bool Equals(object? obj)
+        {
+            Contact contact;
+            if (obj is Contact)
+            {
+                contact = (Contact)obj;
+            }
+            else
+            {
+                return false;
+            }
+            return (
+                this.Surname == contact.Surname &&
+                this.Name == contact.Name &&
+                this.Email == contact.Email &&
+                this.PhoneNumber.Phone == contact.PhoneNumber.Phone &&
+                this.VkID == contact.VkID &&
+                this.Birthday == contact.Birthday);
         }
     }
 }

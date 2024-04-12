@@ -9,31 +9,27 @@ namespace ContactApp.Service
     public static class Serializer
     {
         /// <summary>
-        /// Путь к JSON - файлу контактов.
-        /// </summary>
-        private static readonly string _path =
-            Path.Combine(AppContext.BaseDirectory, "Contacts.json");
-
-        /// <summary>
         /// Метод сериализации данных объектов класса <see cref="Contact"/>.
         /// </summary>
         /// <param name="data">Список объектов класса <see cref="Contact"/>.</param>
-        public static void SaveToFile(List<Contact> data)
+        /// <param name="path">Путь для сохранения файлов.</param>
+        public static void SaveToFile(List<Contact> data, string path)
         {
             var serialized = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(_path, serialized);
+            File.WriteAllText(path, serialized);
         }
 
         /// <summary>
         /// Метод десериализации данных объектов класса <see cref="Contact"/>.
         /// </summary>
+        /// <param name="path">Путь до файла, который надо десереализовать.</param>
         /// <returns>Список объектов класса <see cref="Contact"/>.</returns>
-        public static List<Contact> LoadFromFile() 
+        public static List<Contact> LoadFromFile(string path) 
         {
             var data = new List<Contact>();
-            if (File.Exists(_path))
+            if (File.Exists(path))
             {
-                var jsonConvert = File.ReadAllText(_path);
+                var jsonConvert = File.ReadAllText(path);
                 data = JsonConvert.DeserializeObject<List<Contact>>(jsonConvert);
             }
             return data;
